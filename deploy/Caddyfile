@@ -1,0 +1,21 @@
+# /etc/caddy/Caddyfile on the VPS. Caddy gets and renews the https certificate itself.
+munenehassan.com, www.munenehassan.com {
+	encode zstd gzip
+	root * /var/www/munene/current
+
+	@www host www.munenehassan.com
+	redir @www https://munenehassan.com{uri} permanent
+
+	# hashed build files never change; everything else revalidates
+	@immutable path /_app/immutable/*
+	header @immutable Cache-Control "public, max-age=31536000, immutable"
+	@github path /github.json
+	header @github Cache-Control "public, max-age=3600"
+
+	try_files {path} {path}.html {path}/index.html
+	file_server
+	handle_errors {
+		rewrite * /404.html
+		file_server
+	}
+}

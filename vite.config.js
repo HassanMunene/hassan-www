@@ -2,39 +2,16 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { enhancedImages } from '@sveltejs/enhanced-img';
 import { defineConfig } from 'vitest/config';
 import Icons from 'unplugin-icons/vite';
-import fs from 'node:fs';
 
-// Serves /inspo.json and /github.json during `vite dev`, where the cloudflare
-// worker (worker/index.js) that normally provides them doesn't run. Reads
-// CONVEX_URL from .dev.vars and vars from wrangler.jsonc, and fetches straight
-// from the sources (no KV cache).
+// Serves /github.json during `vite dev`. In production the file is written by
+// scripts/github.js (at deploy time, then refreshed daily by cron on the server).
+const GITHUB_USERNAME = 'HassanMunene';
+
 function workerDev() {
-	const wranglerVars = () =>
-		JSON.parse(fs.readFileSync('wrangler.jsonc', 'utf8').replace(/^\s*\/\/.*$/gm, '')).vars;
-
 	const handlers = {
-		'/inspo.json': async () => {
-			const { fetchInspo } = await import('./worker/index.js');
-			const devVars = Object.fromEntries(
-				fs
-					.readFileSync('.dev.vars', 'utf8')
-					.split('\n')
-					.filter((line) => line.includes('='))
-					.map((line) => {
-						const i = line.indexOf('=');
-						return [line.slice(0, i).trim(), line.slice(i + 1).trim()];
-					})
-			);
-			return fetchInspo(
-				devVars.CONVEX_URL,
-				wranglerVars()
-					.INSPO_COLLECTIONS.split(',')
-					.map((name) => name.trim())
-			);
-		},
 		'/github.json': async () => {
-			const { fetchGithub } = await import('./worker/index.js');
-			return fetchGithub(wranglerVars().GITHUB_USERNAME);
+			const { fetchGithub } = await import('./scripts/github.js');
+			return fetchGithub(GITHUB_USERNAME);
 		}
 	};
 
@@ -66,6 +43,20 @@ export default defineConfig({
 		}),
 		workerDev()
 	],
+	server: {
+		// compile the heavy first-visit pages when the dev server starts, so the
+		// first click on the logo (home) doesn't wait on an on-demand compile
+		warmup: {
+			clientFiles: [
+				'./src/routes/+layout.svelte',
+				'./src/routes/+page.svelte',
+				'./src/routes/projects/+page.svelte',
+				'./src/routes/projects/[slug]/+page.svelte',
+				'./src/routes/field-notes/+page.svelte',
+				'./src/routes/about/+page.svelte'
+			]
+		}
+	},
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
 	}

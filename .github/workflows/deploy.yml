@@ -1,0 +1,38 @@
+# every push to main builds the site and uploads it to the VPS.
+# needs three repository secrets (Settings > Secrets and variables > Actions):
+#   DEPLOY_HOST     the VPS ip or hostname
+#   DEPLOY_USER     the linux user on the VPS
+#   DEPLOY_SSH_KEY  the private key for that user (a key made just for deploys)
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - run: bun run build
+      - name: Refresh github.json (keeps the server's copy if github is unreachable)
+        run: node scripts/github.js HassanMunene build/github.json || true
+      - name: Upload to the VPS
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+          SSH="ssh -i ~/.ssh/id_deploy"
+          rsync -az --delete --exclude 'github.json' -e "$SSH" build/ "$DEPLOY_USER@$DEPLOY_HOST:/var/www/munene/current/"
+          [ -f build/github.json ] && rsync -az -e "$SSH" build/github.json "$DEPLOY_USER@$DEPLOY_HOST:/var/www/munene/current/github.json" || true

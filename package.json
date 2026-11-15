@@ -11,8 +11,7 @@
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
-		"deploy vercel": "vercel build --prod && vercel deploy --prebuilt --prod",
-		"deploy": "vite build && wrangler deploy"
+		"deploy": "bash scripts/deploy.sh"
 	},
 	"devDependencies": {
 		"@iconify-json/ph": "^1.2.2",
@@ -22,24 +21,20 @@
 		"@sveltejs/enhanced-img": "0.10.4",
 		"@sveltejs/kit": "^2.56.1",
 		"@sveltejs/vite-plugin-svelte": "^7.0.0",
-		"@types/eslint": "^9.6.1",
 		"eslint": "^10.2.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.17.0",
 		"mdsvex": "^0.12.7",
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.5.1",
-		"sass": "^1.99.0",
 		"shiki": "^4.0.2",
 		"svelte": "^5.55.1",
 		"unplugin-icons": "^23.0.1",
 		"vite": "^8.0.3",
-		"vitest": "^4.1.2",
-		"wrangler": "^4.126.0"
+		"vitest": "^4.1.2"
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource/space-mono": "5.1.x",
-		"embla-carousel-svelte": "^8.6.0"
+		"@fontsource/space-mono": "5.1.x"
 	}
 }
