@@ -1,8 +1,8 @@
 export function load() {
 	return {
 		meta: {
-			title: 'about',
-			description: 'info about me.'
+			title: 'About',
+			description: 'About me: who I am, where I’ve worked and what I build.'
 		}
 	};
 }

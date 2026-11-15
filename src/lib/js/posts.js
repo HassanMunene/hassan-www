@@ -27,7 +27,7 @@ export async function importOgImage(imagePath) {
 		query: {
 			enhanced: true,
 			w: '1200',
-			format: 'jpg;png'
+			format: 'jpg'
 		}
 	});
 	for (const [path, src] of Object.entries(images)) {
@@ -35,4 +35,11 @@ export async function importOgImage(imagePath) {
 			return await src();
 		}
 	}
+}
+
+// minutes to read a post, from its raw markdown (frontmatter dropped, code counted too)
+export function readingMinutes(raw = '') {
+	const body = raw.replace(/^---[\s\S]*?---/, '');
+	const words = body.split(/\s+/).filter(Boolean).length;
+	return Math.max(1, Math.round(words / 200));
 }

@@ -13,8 +13,8 @@ export async function GET() {
 	const rssContent = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>${site.name}'s blog</title>
-		<description>posts about various topics.</description>
+		<title>Munene's blog</title>
+		<description>Posts about backend engineering, reliability and building for farmers in Kenya.</description>
 		<link>${siteUrl}/blog</link>
 		<atom:link href="${siteUrl}/blog/rss.xml" rel="self" type="application/rss+xml" />
 		<language>en-us</language>

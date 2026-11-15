@@ -1,8 +1,6 @@
+import { redirect } from '@sveltejs/kit';
+
+// the section was renamed from photos/journey to field notes
 export function load() {
-	return {
-		meta: {
-			title: 'the journey so far',
-			description: 'photos, videos, and the moments that got me here.'
-		}
-	};
+	redirect(301, '/field-notes');
 }

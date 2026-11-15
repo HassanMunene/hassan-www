@@ -6,7 +6,7 @@
 
 <main>
 	<h1>
-		projects<span class="count" aria-label="{data.posts.length} projects"
+		Projects<span class="count" aria-label="{data.posts.length} projects"
 			>[{data.posts.length}]</span
 		>
 	</h1>

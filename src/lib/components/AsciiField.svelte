@@ -58,10 +58,10 @@
 			fadeDuration: 0.22
 		},
 		color: {
-			hue: 220,
-			saturation: 15,
-			baseLightness: 50,
-			burstLightness: 25,
+			hue: 148,
+			saturation: 30,
+			baseLightness: 42,
+			burstLightness: -14,
 			baseAlpha: 0.35,
 			burstAlpha: 0.8
 		}

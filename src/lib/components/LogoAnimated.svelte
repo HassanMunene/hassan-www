@@ -244,8 +244,8 @@
 			y1="230"
 			x2="260"
 			y2="70"
-			stroke="rgb(98, 98, 238)"
-			stroke-width="19.84"
+			stroke="rgb(31, 106, 64)"
+			stroke-width="32"
 			stroke-linecap="round"
 		/>
 	</g>
@@ -256,8 +256,8 @@
 			y1="230"
 			x2="40"
 			y2="70"
-			stroke="rgb(98, 98, 238)"
-			stroke-width="19.84"
+			stroke="rgb(31, 106, 64)"
+			stroke-width="32"
 			stroke-linecap="round"
 		/>
 	</g>
@@ -270,8 +270,8 @@
 			y1="205.3"
 			x2="180.3"
 			y2="167.5"
-			stroke="rgb(38, 187, 217)"
-			stroke-width="19.84"
+			stroke="rgb(209, 148, 22)"
+			stroke-width="32"
 			stroke-linecap="round"
 		/>
 	</g>
@@ -289,8 +289,8 @@
 			y1="167.5"
 			x2="274.3"
 			y2="205.3"
-			stroke="rgb(189, 99, 238)"
-			stroke-width="19.84"
+			stroke="rgb(196, 90, 58)"
+			stroke-width="32"
 			stroke-linecap="round"
 		/>
 	</g>

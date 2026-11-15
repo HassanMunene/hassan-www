@@ -1,9 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
-	<circle cx="150" cy="150" r="150" fill="#1c1f26" />
-	<g fill="none" stroke-linecap="round" stroke-width="20">
-		<path d="M85 225 V95" stroke="#6262ee" />
-		<path d="M215 225 V95" stroke="#6262ee" />
-		<path d="M85 95 150 175" stroke="#26bbd9" />
-		<path d="M150 175 215 95" stroke="#bd63ee" />
+	<rect width="300" height="300" rx="68" fill="#f7f3ea" />
+	<rect x="1.5" y="1.5" width="297" height="297" rx="66.5" fill="none" stroke="#d9d2c0" stroke-width="3" />
+	<g transform="translate(150 150) scale(0.92) translate(-150 -150)" fill="none" stroke-width="32" stroke-linecap="round">
+		<path d="M40 230 V70" stroke="rgb(31, 106, 64)" />
+		<path d="M260 230 V70" stroke="rgb(31, 106, 64)" />
+		<path d="M40 70 L150 185" stroke="rgb(209, 148, 22)" />
+		<path d="M150 185 L260 70" stroke="rgb(196, 90, 58)" />
 	</g>
 </svg>

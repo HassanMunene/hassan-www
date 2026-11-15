@@ -1,8 +1,8 @@
 export function load() {
 	return {
 		meta: {
-			title: 'contact',
-			description: 'ways to get in touch.'
+			title: 'Contact',
+			description: 'Get in touch: questions, ideas, or something you want to build together.'
 		}
 	};
 }

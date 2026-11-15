@@ -1,14 +1,16 @@
 :root {
-	--bg: hsl(220, 10%, 8%);
-	--bg-2: hsl(220, 10%, 11%);
-	--bg-3: hsl(220, 10%, 16%);
-	--txt-3: hsl(220, 11%, 35%);
-	--txt-2: hsl(220, 14%, 55%);
-	--txt: hsl(220, 30%, 80%);
-	--txt-0: hsl(220, 45%, 90%);
-	--blue: hsl(190, 70%, 50%);
-	--purple: hsl(240, 80%, 66%);
-	--pink: hsl(279, 80%, 66%);
+	/* warm paper + deep farm green */
+	--bg: hsl(42, 40%, 96%);
+	--bg-2: hsl(42, 28%, 92%);
+	--bg-3: hsl(40, 20%, 84%);
+	--txt-3: hsl(34, 10%, 55%);
+	--txt-2: hsl(34, 10%, 38%);
+	--txt: hsl(30, 18%, 18%);
+	--txt-0: hsl(30, 25%, 9%);
+	--green: hsl(148, 48%, 26%);
+	--ochre: hsl(38, 82%, 44%);
+	--clay: hsl(14, 62%, 47%);
+	color-scheme: light;
 	font-family: 'Space Grotesk Variable', sans-serif;
 	font-weight: 300;
 }
@@ -84,7 +86,7 @@ code {
 	padding: 0 0.25em;
 	font-size: 1rem;
 	font-variant-ligatures: no-contextual;
-	color: #cdd6f4;
+	color: var(--txt);
 }
 
 pre {
@@ -102,13 +104,13 @@ pre {
 
 .shiki {
 	.diff.add {
-		background-color: hsla(190, 70%, 50%, 0.1);
+		background-color: hsla(148, 48%, 36%, 0.14);
 	}
 	.diff.remove {
-		background-color: hsla(340, 80%, 66%, 0.1);
+		background-color: hsla(14, 62%, 47%, 0.14);
 	}
 	.highlighted {
-		background-color: hsla(220, 30%, 80%, 0.1);
+		background-color: hsla(30, 18%, 18%, 0.07);
 	}
 }
 

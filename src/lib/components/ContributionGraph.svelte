@@ -18,28 +18,30 @@
 	function cellColor(i) {
 		const t = cols > 1 ? Math.floor((i + offset) / 7) / (cols - 1) : 0;
 		return t < 0.5
-			? `color-mix(in oklab, var(--purple) ${(t * 200).toFixed(1)}%, var(--pink))`
-			: `color-mix(in oklab, var(--blue) ${((t - 0.5) * 200).toFixed(1)}%, var(--purple))`;
+			? `color-mix(in oklab, var(--ochre) ${(t * 200).toFixed(1)}%, var(--clay))`
+			: `color-mix(in oklab, var(--green) ${((t - 0.5) * 200).toFixed(1)}%, var(--ochre))`;
 	}
 
 	function label(day) {
-		const date = new Date(day.date)
-			.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
-			.toLowerCase();
+		const date = new Date(day.date).toLocaleDateString('en-US', {
+			month: 'short',
+			day: 'numeric',
+			timeZone: 'UTC'
+		});
 		return `${day.count} contribution${day.count === 1 ? '' : 's'} on ${date}`;
 	}
 </script>
 
 {#if error}
-	<p class="muted">couldn't load contributions. try again later?</p>
+	<p class="muted">Couldn’t load contributions. Try again later?</p>
 {:else if !data}
-	<p class="muted">loading...</p>
+	<p class="muted">Loading…</p>
 {:else}
 	<div class="scroll">
 		<div
 			class="graph"
 			role="img"
-			aria-label="github contribution graph: {data.total} contributions in the last year"
+			aria-label="GitHub contribution graph: {data.total} contributions in the last year"
 		>
 			{#each data.days as day, i (day.date)}
 				<span

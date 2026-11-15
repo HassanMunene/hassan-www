@@ -13,9 +13,9 @@ const mdsvexOptions = {
 		highlighter: async (code, lang = 'text') => {
 			const html = await codeToHtml(code, {
 				lang,
-				theme: 'catppuccin-mocha',
+				theme: 'catppuccin-latte',
 				colorReplacements: {
-					'#1e1e2e': 'none'
+					'#eff1f5': 'none'
 				},
 				transformers: [
 					transformerNotationDiff(),
@@ -43,7 +43,11 @@ const config = {
 		paths: {
 			relative: false
 		},
-		inlineStyleThreshold: Infinity
+		inlineStyleThreshold: Infinity,
+		prerender: {
+			// [doc] pages only exist when a project has extra docs
+			handleUnseenRoutes: 'ignore'
+		}
 	}
 };
 

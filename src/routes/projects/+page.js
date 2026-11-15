@@ -10,8 +10,8 @@ export async function load() {
 	return {
 		posts,
 		meta: {
-			title: 'projects',
-			description: "projects i've worked on."
+			title: 'Projects',
+			description: 'Projects I’ve worked on.'
 		}
 	};
 }

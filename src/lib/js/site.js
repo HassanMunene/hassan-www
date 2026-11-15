@@ -2,8 +2,13 @@
 // the site name or canonical domain is referenced.
 export const site = {
 	name: 'munene',
-	domain: 'hassanmunene.com',
-	url: 'https://hassanmunene.com',
+	domain: 'munenehassan.com',
+	url: 'https://munenehassan.com',
 	title: 'munene',
-	description: 'my website/portfolio/blog.'
+	description: 'My website, portfolio and blog.',
+
+	// contact form: paste your free access key from https://web3forms.com here.
+	// (it is meant to be public; it only lets the form send mail to *your* inbox.)
+	// while this is empty, the form falls back to opening the visitor's mail app.
+	web3formsKey: ''
 };
