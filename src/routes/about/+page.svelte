@@ -98,6 +98,19 @@
 				I've learned that building is only half the job. The rest is rolling it out, training the
 				people who use it, and picking up the phone when something breaks.
 			</p>
+			<a class="cv" href="/Hassan_Munene_Awanzi.pdf" download>
+				<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+					<path
+						d="M12 4v10m0 0-4-4m4 4 4-4M5 19h14"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+				</svg>
+				Download my CV
+			</a>
 		</div>
 	</section>
 
@@ -340,6 +353,30 @@
 
 	.sep {
 		margin: 0 0.9ch;
+	}
+
+	.cv {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		margin-top: 0.75rem;
+		padding: 0.7rem 1.4rem;
+		border-radius: 999px;
+		background: var(--green);
+		color: var(--bg);
+		font-family: 'Space Mono', monospace;
+		font-size: 0.95rem;
+		text-decoration: none;
+		box-shadow: 0 8px 18px -8px hsla(148, 48%, 12%, 0.6);
+		transition:
+			transform 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.cv:hover,
+	.cv:focus-visible {
+		transform: translateY(-2px);
+		box-shadow: 0 12px 22px -8px hsla(148, 48%, 12%, 0.7);
 	}
 
 	.play-pill {
